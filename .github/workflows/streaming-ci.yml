@@ -1,0 +1,26 @@
+name: NileMart Streaming CI
+
+on:
+  pull_request:
+    branches:
+      - develop
+    paths:
+      - "streaming/**"
+      - ".github/workflows/streaming-ci.yml"
+  workflow_dispatch:
+
+jobs:
+  python-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check Python syntax
+        run: python -m compileall -q streaming/producer.py streaming/consumer.py
