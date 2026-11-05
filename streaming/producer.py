@@ -16,7 +16,7 @@ if not NAMESPACE or not CONNECTION:
     while True:
         time.sleep(300)
 INTERVAL = max(float(os.getenv('EVENT_INTERVAL_SECONDS', '5')), 0.1)
-HUBS = ['commerce-events', 'supply-events', 'people-events', 'finance-events']
+HUBS = ['commerce', 'supply', 'people', 'finance']
 stop = False
 
 def terminate(*_):
